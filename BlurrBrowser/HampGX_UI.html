@@ -38,17 +38,18 @@
 
 <script>
     function startproxy() {
-        // Step 1: Grab the search query from the input field
-        const searchQuery = document.getElementById("searchInput").value;
+        const proxy = require('proxy-agent');
 
-// Step 2: Check if the search query is not empty
-        if (searchQuery.trim() !== "") {
-  // Step 3: Construct the new URL using the proxy server and search query
-          const newURL = `http://139.64.165.3/search?q=${encodeURIComponent(searchQuery)}&type=web`;
+// Set up the proxy agent with the server address
+        const proxyAgent = proxy('http://139.64.165.3');
 
-  // Step 4: Redirect the user to the new URL
-          window.location.href = newURL;
-}
+// Make a request using the proxy agent
+        request({
+          uri: 'https://example.com',
+          agent: proxyAgent
+},      function (error, response, body) {
+  // Handle the response
+});
 </script>
 <script>
     function performSearch() {
