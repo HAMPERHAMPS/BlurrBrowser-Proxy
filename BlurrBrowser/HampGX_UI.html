@@ -38,17 +38,29 @@
 
 <script>
     function startproxy() {
-        const proxy = require('proxy-agent');
+        // Define the original object
+        const input = document.getElementById("searchInput").value;
+const target = {
+  message1: "hello",
+  message2: "everyone",
+};
 
-// Set up the proxy agent with the server address
-        const proxyAgent = proxy('http://139.64.165.3');
+// Define the handler
+const handler = {
+  get(input, prop, receiver) {
+    if (prop === "message2") {
+      return "world";
+    }
+    return Reflect.get(...arguments);
+  },
+};
 
-// Make a request using the proxy agent
-        request({
-          uri: 'https://example.com',
-          agent: proxyAgent
-},      function (error, response, body) {
-  // Handle the response
+// Create the proxy
+const proxy = new Proxy(target, handler);
+
+console.log(proxy.message1); // Outputs: hello
+console.log(proxy.message2); // Outputs: world
+
 });
 </script>
 <script>
