@@ -8,9 +8,9 @@
 </head>
 <body class="body">
 <div class="topnav">
-    <input class="center" id="searchInput" type="text" placeholder="Search or change background"> 
+    <input class="center" id="csrf" type="text" placeholder="Search or change background"> 
     <button onclick="performSearch()">Search</button>
-    <button onclick="startproxy()">Proxy</button>
+    <button id="requestSubmit onclick="startproxy()">Proxy</button>
     <button onclick="changebg()">Change Background</button>
 </div>
 <iframe src="https://john.citrons.xyz/embed?ref=https://blurrbrowser.github.io" style="margin-left:auto;display:block;margin-right:auto;max-width:732px;width:100%;height:94px;border:none;"></iframe>
@@ -27,10 +27,21 @@
         }
     };
 </script>
+    <script>
+        
+        window._urq = window._urq || [];
+        _urq.push(['initSite', '711722bf-8d17-4423-979e-bc7e656808cf']);
+        (function() {
+            var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
+            ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
+        })();
+    
+    </script>
 
 <script>
     function changebg() {
-        const input = document.getElementById("searchInput").value;
+        const input = document.getElementById("csrf").value;
         document.body.style.backgroundImage = "url('" + input + "')";
         localStorage.setItem("backgroundImage", input);
     }
@@ -38,34 +49,12 @@
 
 <script>
     function startproxy() {
-        // Define the original object
-        const input = document.getElementById("searchInput").value;
-const target = {
-  message1: "hello",
-  message2: "everyone",
-};
-
-// Define the handler
-const handler = {
-  get(input, prop, receiver) {
-    if (prop === "message2") {
-      return "world";
-    }
-    return Reflect.get(...arguments);
-  },
-};
-
-// Create the proxy
-const proxy = new Proxy(target, handler);
-
-console.log(proxy.message1); // Outputs: hello
-console.log(proxy.message2); // Outputs: world
-
-});
+        
+        {
 </script>
 <script>
     function performSearch() {
-        const searchQuery = document.getElementById("searchInput").value;
+        const searchQuery = document.getElementById("csrf").value;
         if (searchQuery.trim() !== "") {
             // Redirect to Bing search results page
             window.location.href = `https://www.bing.com/search?q=${encodeURIComponent(searchQuery)}`;
