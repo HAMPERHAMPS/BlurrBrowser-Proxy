@@ -10,10 +10,10 @@
 <div class="topnav">
     <input class="center" id="csrf" type="text" placeholder="Search or change background"> 
     <button onclick="performSearch()">Search</button>
-    <button id="requestSubmit onclick="startproxy()">Proxy</button>
+    <button id="requestSubmit" onclick="startProxy()">Proxy</button>
     <button onclick="changebg()">Change Background</button>
 </div>
-<iframe src="https://john.citrons.xyz/embed?ref=https://blurrbrowser.github.io" style="margin-left:auto;display:block;margin-right:auto;max-width:732px;width:100%;height:94px;border:none;"></iframe>
+<iframe id="proxyFrame" style="display:none;"></iframe>
 <script>
     document.body.style.backgroundImage = "url('https://subkeys.github.io/WOW/ezgif-1-314fe6f0d9.gif')";
 </script>
@@ -23,21 +23,17 @@
         var savedBackground = localStorage.getItem("backgroundImage");
         if (savedBackground) {
             document.body.style.backgroundImage = "url('" + savedBackground + "')";
-            
         }
     };
 </script>
-    <script>
-        
-        window._urq = window._urq || [];
-        _urq.push(['initSite', '711722bf-8d17-4423-979e-bc7e656808cf']);
-        (function() {
-            var ur = document.createElement('script'); ur.type = 'text/javascript'; ur.async = true;
-            ur.src = ('https:' == document.location.protocol ? 'https://cdn.userreport.com/userreport.js' : 'http://cdn.userreport.com/userreport.js');
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ur, s);
-        })();
-    
-    </script>
+
+<script>
+    function startProxy() {
+        const proxyFrame = document.getElementById("proxyFrame");
+        proxyFrame.src = "https://www.croxyspider.com/webproxy?url=https://blurrbrowser.github.io";
+        proxyFrame.style.display = "block";
+    }
+</script>
 
 <script>
     function changebg() {
@@ -46,7 +42,6 @@
         localStorage.setItem("backgroundImage", input);
     }
 </script>
-
 
 <script>
     function performSearch() {
